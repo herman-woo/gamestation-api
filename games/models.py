@@ -16,11 +16,14 @@ class GamePlatform(models.TextChoices):
 
 class Game(models.Model):
     game_name = models.CharField(max_length=100)
-    game_platform = models.CharField(max_length=100, choices=GamePlatform.choices, default=GamePlatform.PC)
-    game_status = models.CharField(max_length=100, choices=GameStatus.choices, default=GameStatus.PLAYING)
-    game_completion_percentage = models.IntegerField()
-    hours_played = models.IntegerField()
-    game_completed = models.BooleanField()
-    game_image_path = models.CharField(max_length=250)
-    created_time = models.DateTimeField(null=True,auto_now_add=True)  # Set only on creation
-    updated_time = models.DateTimeField(null=True, auto_now=True)      # Set on each save
+    game_platform = models.CharField(max_length=15, choices=GamePlatform.choices, default=GamePlatform.PC)
+    game_status = models.CharField(max_length=11, choices=GameStatus.choices, default=GameStatus.PLAYING)
+    game_completion_percentage = models.PositiveIntegerField()
+    hours_played = models.PositiveIntegerField()
+    game_completed = models.BooleanField(default=False)
+    game_image_path = models.ImageField(upload_to='game_images/', blank=True, null=True) 
+    created_time = models.DateTimeField(auto_now_add=True)  # Set only on creation
+    updated_time = models.DateTimeField(auto_now=True)      # Set on each save
+
+    #class Meta():
+    #     unique_together = ('game_name', 'game_platform')

@@ -4,16 +4,12 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Game
-import json
 from .serializer import GameSerializer
-#from models import Game
-#from snippets.models import Snippet
-#from snippets.serializers import SnippetSerializer
 
 
 
 
-@api_view(['GET','POST'])
+@api_view(['GET','POST','OPTIONS'])
 def index(request):
     if request.method == 'GET':
         queryset = Game.objects.all()
@@ -26,6 +22,10 @@ def index(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'OPTIONS':
+        print("Options Are Here, why is that doing it?")
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def get_book(request,id):
