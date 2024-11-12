@@ -13,5 +13,6 @@ class GamesSerializer(serializers.ModelSerializer):
                   'completion_status',
                   'platinum',
                   'completed',
-                  'hours_played'
+                  'hours_played',
+                  'game_image_path'
                   ]

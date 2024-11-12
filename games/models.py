@@ -28,5 +28,6 @@ class Game(models.Model):
     platinum = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
     hours_played = models.IntegerField()
+    game_image_path = models.ImageField(upload_to='game_images/', blank=True, null=True) 
     def __str__(self):
         return self.game_name

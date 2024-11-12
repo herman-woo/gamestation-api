@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-60b!5@y)qxr7-v^v8p=l!ei#og*rm$*nh8ob5(h&4$s!h+5!vc
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# settings.py
+MEDIA_URL = '/media/'
 
 
 # Application definition
@@ -125,3 +127,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
